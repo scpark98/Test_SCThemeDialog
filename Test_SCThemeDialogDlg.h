@@ -1,12 +1,12 @@
 ﻿
 // Test_SCThemeDialogDlg.h: 헤더 파일
 //
-
 #pragma once
 
+#include "../../Common/CDialog/SCThemeDialog/SCThemeDialog.h"
 
 // CTestSCThemeDialogDlg 대화 상자
-class CTestSCThemeDialogDlg : public CDialogEx
+class CTestSCThemeDialogDlg : public CSCThemeDialog
 {
 // 생성입니다.
 public:
@@ -33,4 +33,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
+	afx_msg void OnBnClickedCancel();
 };

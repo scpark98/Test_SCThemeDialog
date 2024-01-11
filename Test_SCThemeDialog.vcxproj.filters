@@ -36,9 +36,6 @@
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="SCThemeDialog.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="FirstDlg.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -54,6 +51,15 @@
     <ClInclude Include="..\..\Common\colors.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Common\MemoryDC.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CDialog\SCThemeDialog\SCThemeDialog.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CButton\SCSystemButtons\SCSystemButtons.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_SCThemeDialog.cpp">
@@ -63,9 +69,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SCThemeDialog.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="FirstDlg.cpp">
@@ -81,6 +84,12 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\colors.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CDialog\SCThemeDialog\SCThemeDialog.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CButton\SCSystemButtons\SCSystemButtons.cpp">
       <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>

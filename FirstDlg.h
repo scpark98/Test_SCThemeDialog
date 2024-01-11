@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "SCThemeDialog.h"
+#include "../../Common/CDialog/SCThemeDialog/SCThemeDialog.h"
 
 // CFirstDlg 대화 상자
 
@@ -28,4 +28,5 @@ public:
 	afx_msg void OnBnClickedCheckTitlebar();
 	CButton m_check_resize;
 	afx_msg void OnBnClickedCheckResize();
+	virtual BOOL OnInitDialog();
 };

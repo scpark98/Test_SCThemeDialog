@@ -53,21 +53,22 @@ END_MESSAGE_MAP()
 
 
 CTestSCThemeDialogDlg::CTestSCThemeDialogDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_TEST_SCTHEMEDIALOG_DIALOG, pParent)
+	: CSCThemeDialog(IDD_TEST_SCTHEMEDIALOG_DIALOG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
 void CTestSCThemeDialogDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialogEx::DoDataExchange(pDX);
+	CSCThemeDialog::DoDataExchange(pDX);
 }
 
-BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CDialogEx)
+BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CSCThemeDialog)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CTestSCThemeDialogDlg::OnBnClickedOk)
+	ON_BN_CLICKED(IDCANCEL, &CTestSCThemeDialogDlg::OnBnClickedCancel)
 END_MESSAGE_MAP()
 
 
@@ -75,7 +76,7 @@ END_MESSAGE_MAP()
 
 BOOL CTestSCThemeDialogDlg::OnInitDialog()
 {
-	CDialogEx::OnInitDialog();
+	CSCThemeDialog::OnInitDialog();
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
 
@@ -103,6 +104,10 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	//set_titlebar_color(RGB(64, 64, 255));
+	//set_back_color(RGB(64, 64, 64));
+	set_color_theme(CSCThemeDialog::color_theme_visualstudio);
+	SetWindowText(_T("SCThemeDialogDlg"));
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -116,7 +121,7 @@ void CTestSCThemeDialogDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 	else
 	{
-		CDialogEx::OnSysCommand(nID, lParam);
+		CSCThemeDialog::OnSysCommand(nID, lParam);
 	}
 }
 
@@ -145,7 +150,7 @@ void CTestSCThemeDialogDlg::OnPaint()
 	}
 	else
 	{
-		CDialogEx::OnPaint();
+		CSCThemeDialog::OnPaint();
 	}
 }
 
@@ -153,6 +158,7 @@ void CTestSCThemeDialogDlg::OnPaint()
 //  이 함수를 호출합니다.
 HCURSOR CTestSCThemeDialogDlg::OnQueryDragIcon()
 {
+	TRACE(_T("dragging...\n"));
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
@@ -162,4 +168,10 @@ void CTestSCThemeDialogDlg::OnBnClickedOk()
 {
 	CFirstDlg dlg;
 	dlg.DoModal();
+}
+
+
+void CTestSCThemeDialogDlg::OnBnClickedCancel()
+{
+	CDialogEx::OnCancel();
 }

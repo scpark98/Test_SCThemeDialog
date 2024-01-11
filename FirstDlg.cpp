@@ -40,6 +40,18 @@ END_MESSAGE_MAP()
 
 // CFirstDlg 메시지 처리기
 
+BOOL CFirstDlg::OnInitDialog()
+{
+	CSCThemeDialog::OnInitDialog();
+
+	// TODO:  여기에 추가 초기화 작업을 추가합니다.
+	set_titlebar_color(RGB(64, 64, 255));
+	set_back_color(RGB(64, 64, 64));
+
+	return TRUE;  // return TRUE unless you set the focus to a control
+				  // 예외: OCX 속성 페이지는 FALSE를 반환해야 합니다.
+}
+
 
 void CFirstDlg::OnBnClickedOk()
 {
@@ -56,7 +68,7 @@ void CFirstDlg::OnBnClickedCancel()
 
 void CFirstDlg::OnBnClickedCheckTitlebar()
 {
-	show_titlebar(m_check_titlebar.GetCheck() == BST_CHECKED);
+	set_titlebar_height(m_check_titlebar.GetCheck() == BST_CHECKED ? 32 : 0);
 }
 
 
@@ -64,3 +76,4 @@ void CFirstDlg::OnBnClickedCheckResize()
 {
 	enable_resize(m_check_resize.GetCheck() == BST_CHECKED);
 }
+
