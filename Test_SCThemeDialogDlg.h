@@ -4,6 +4,8 @@
 #pragma once
 
 #include "../../Common/CDialog/SCThemeDialog/SCThemeDialog.h"
+#include "../../Common/CStatic/SCStatic/SCStatic.h"
+#include "../../Common/CButton/GdiButton/GdiButton.h"
 
 // CTestSCThemeDialogDlg 대화 상자
 class CTestSCThemeDialogDlg : public CSCThemeDialog
@@ -34,4 +36,7 @@ protected:
 public:
 	afx_msg void OnBnClickedOk();
 	afx_msg void OnBnClickedCancel();
+	CSCStatic m_static_text;
+	CGdiButton m_button_ok;
+	CGdiButton m_button_cancel;
 };

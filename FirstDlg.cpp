@@ -45,7 +45,7 @@ BOOL CFirstDlg::OnInitDialog()
 	CSCThemeDialog::OnInitDialog();
 
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
-	set_titlebar_color(RGB(64, 64, 255));
+	set_titlebar_back_color(RGB(64, 64, 255));
 	set_back_color(RGB(64, 64, 64));
 
 	return TRUE;  // return TRUE unless you set the focus to a control

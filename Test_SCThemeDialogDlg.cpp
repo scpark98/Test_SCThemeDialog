@@ -9,6 +9,7 @@
 #include "afxdialogex.h"
 
 #include "FirstDlg.h"
+#include "../../Common/Functions.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -61,6 +62,9 @@ CTestSCThemeDialogDlg::CTestSCThemeDialogDlg(CWnd* pParent /*=nullptr*/)
 void CTestSCThemeDialogDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CSCThemeDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_STATIC_TEXT, m_static_text);
+	DDX_Control(pDX, IDOK, m_button_ok);
+	DDX_Control(pDX, IDCANCEL, m_button_cancel);
 }
 
 BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CSCThemeDialog)
@@ -108,6 +112,9 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	//set_back_color(RGB(64, 64, 64));
 	set_color_theme(CSCThemeDialog::color_theme_visualstudio);
 	SetWindowText(_T("SCThemeDialogDlg"));
+	set_title(_T("SCThemeDialogDlg"));
+
+	m_static_text.SetTextColor(white);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
