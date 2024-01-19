@@ -73,6 +73,7 @@ BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CSCThemeDialog)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CTestSCThemeDialogDlg::OnBnClickedOk)
 	ON_BN_CLICKED(IDCANCEL, &CTestSCThemeDialogDlg::OnBnClickedCancel)
+	ON_WM_WINDOWPOSCHANGED()
 END_MESSAGE_MAP()
 
 
@@ -108,13 +109,34 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	m_resize.Create(this);
+	m_resize.Add(IDOK, 50, 100, 0, 0);
+	m_resize.Add(IDCANCEL, 50, 100, 0, 0);
+	m_resize.Add(IDC_STATIC_TEXT, 0, 0, 100, 100);
+
+	// 
 	//set_titlebar_color(RGB(64, 64, 255));
 	//set_back_color(RGB(64, 64, 64));
 	set_color_theme(CSCThemeDialog::color_theme_visualstudio);
 	SetWindowText(_T("SCThemeDialogDlg"));
 	set_title(_T("SCThemeDialogDlg"));
 
-	m_static_text.SetTextColor(white);
+	m_static_text.set_text_color(lightsalmon);
+	m_static_text.set_font_size(32);
+	m_static_text.set_font_bold();
+	m_button_ok.text_color(wheat);
+	m_button_cancel.text_color(wheat);
+	m_button_ok.back_color(cornflowerblue, true);
+	m_button_cancel.back_color(cornflowerblue, true);
+
+	m_button_ok.set_round(10);
+	m_button_cancel.set_round(10);
+
+
+	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
+	set_back_image(_T("JPG"), (UINT)IDB_WINDOW, true);
+
+	RestoreWindowPosition(&theApp, this);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -173,6 +195,8 @@ HCURSOR CTestSCThemeDialogDlg::OnQueryDragIcon()
 
 void CTestSCThemeDialogDlg::OnBnClickedOk()
 {
+	set_back_image(_T("jpg"), IDB_AUTUMN_LIVINGROOM, true);
+	//set_back_image(_T("png"), _T("D:\\1.Projects_C++\\1.test\\Test_SCThemeDialog\\res\\images\\icecream.png"), true);
 	CFirstDlg dlg;
 	dlg.DoModal();
 }
@@ -181,4 +205,13 @@ void CTestSCThemeDialogDlg::OnBnClickedOk()
 void CTestSCThemeDialogDlg::OnBnClickedCancel()
 {
 	CDialogEx::OnCancel();
+}
+
+
+void CTestSCThemeDialogDlg::OnWindowPosChanged(WINDOWPOS* lpwndpos)
+{
+	CSCThemeDialog::OnWindowPosChanged(lpwndpos);
+
+	// TODO: Add your message handler code here
+	SaveWindowPosition(&theApp, this);
 }

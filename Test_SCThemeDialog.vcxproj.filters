@@ -63,6 +63,9 @@
     <ClInclude Include="..\..\Common\CStatic\SCStatic\SCStatic.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Common\ResizeCtrl.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_SCThemeDialog.cpp">
@@ -98,6 +101,9 @@
     <ClCompile Include="..\..\Common\CStatic\SCStatic\SCStatic.cpp">
       <Filter>Common</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Common\ResizeCtrl.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TestSCThemeDialog.rc">
@@ -111,6 +117,18 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Test_SCThemeDialog.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Z:\내 드라이브\media\test_image\icecream.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\images\icecream.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\images\window.jpg">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="res\images\autumn_livingroom.jpg">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

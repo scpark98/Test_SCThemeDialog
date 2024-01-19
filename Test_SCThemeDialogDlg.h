@@ -6,6 +6,7 @@
 #include "../../Common/CDialog/SCThemeDialog/SCThemeDialog.h"
 #include "../../Common/CStatic/SCStatic/SCStatic.h"
 #include "../../Common/CButton/GdiButton/GdiButton.h"
+#include "../../Common/ResizeCtrl.h"
 
 // CTestSCThemeDialogDlg 대화 상자
 class CTestSCThemeDialogDlg : public CSCThemeDialog
@@ -18,6 +19,10 @@ public:
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_TEST_SCTHEMEDIALOG_DIALOG };
 #endif
+
+protected:
+	CResizeCtrl		m_resize;
+
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 지원입니다.
@@ -39,4 +44,5 @@ public:
 	CSCStatic m_static_text;
 	CGdiButton m_button_ok;
 	CGdiButton m_button_cancel;
+	afx_msg void OnWindowPosChanged(WINDOWPOS* lpwndpos);
 };
