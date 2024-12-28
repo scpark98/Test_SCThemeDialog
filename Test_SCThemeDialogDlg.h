@@ -3,13 +3,13 @@
 //
 #pragma once
 
-#include "../../Common/CDialog/SCThemeDialog/SCThemeDialog.h"
+#include "../../Common/CDialog/SCThemeDlg/SCThemeDlg.h"
 #include "../../Common/CStatic/SCStatic/SCStatic.h"
 #include "../../Common/CButton/GdiButton/GdiButton.h"
 #include "../../Common/ResizeCtrl.h"
 
 // CTestSCThemeDialogDlg 대화 상자
-class CTestSCThemeDialogDlg : public CSCThemeDialog
+class CTestSCThemeDialogDlg : public CSCThemeDlg
 {
 // 생성입니다.
 public:

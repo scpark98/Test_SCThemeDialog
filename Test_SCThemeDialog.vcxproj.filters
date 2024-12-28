@@ -54,9 +54,6 @@
     <ClInclude Include="..\..\Common\MemoryDC.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Common\CDialog\SCThemeDialog\SCThemeDialog.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Common\CButton\SCSystemButtons\SCSystemButtons.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -64,6 +61,15 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Common\ResizeCtrl.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CDialog\SCThemeDlg\SCThemeDlg.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CWnd\WndShadow\WndShadow.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\system\ShellImageList\ShellImageList.h">
       <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
@@ -92,9 +98,6 @@
     <ClCompile Include="..\..\Common\colors.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Common\CDialog\SCThemeDialog\SCThemeDialog.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Common\CButton\SCSystemButtons\SCSystemButtons.cpp">
       <Filter>Common</Filter>
     </ClCompile>
@@ -102,6 +105,15 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Common\ResizeCtrl.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CDialog\SCThemeDlg\SCThemeDlg.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CWnd\WndShadow\WndShadow.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\system\ShellImageList\ShellImageList.cpp">
       <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>

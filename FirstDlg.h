@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "../../Common/CDialog/SCThemeDialog/SCThemeDialog.h"
+#include "../../Common/CDialog/SCThemeDlg/SCThemeDlg.h"
 
 // CFirstDlg 대화 상자
 
-class CFirstDlg : public CSCThemeDialog
+class CFirstDlg : public CSCThemeDlg
 {
 	DECLARE_DYNAMIC(CFirstDlg)
 

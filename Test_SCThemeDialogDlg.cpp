@@ -54,20 +54,20 @@ END_MESSAGE_MAP()
 
 
 CTestSCThemeDialogDlg::CTestSCThemeDialogDlg(CWnd* pParent /*=nullptr*/)
-	: CSCThemeDialog(IDD_TEST_SCTHEMEDIALOG_DIALOG, pParent)
+	: CSCThemeDlg(IDD_TEST_SCTHEMEDIALOG_DIALOG, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
 void CTestSCThemeDialogDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CSCThemeDialog::DoDataExchange(pDX);
+	CSCThemeDlg::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_STATIC_TEXT, m_static_text);
 	DDX_Control(pDX, IDOK, m_button_ok);
 	DDX_Control(pDX, IDCANCEL, m_button_cancel);
 }
 
-BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CSCThemeDialog)
+BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CSCThemeDlg)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
@@ -81,7 +81,7 @@ END_MESSAGE_MAP()
 
 BOOL CTestSCThemeDialogDlg::OnInitDialog()
 {
-	CSCThemeDialog::OnInitDialog();
+	CSCThemeDlg::OnInitDialog();
 
 	// 시스템 메뉴에 "정보..." 메뉴 항목을 추가합니다.
 
@@ -117,13 +117,14 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	// 
 	//set_titlebar_color(RGB(64, 64, 255));
 	//set_back_color(RGB(64, 64, 64));
-	set_color_theme(CSCThemeDialog::color_theme_visualstudio);
+	set_color_theme(CSCThemeDlg::color_theme_linkmemine);
 	SetWindowText(_T("SCThemeDialogDlg"));
-	set_title(_T("SCThemeDialogDlg"));
 
 	m_static_text.set_text_color(lightsalmon);
 	m_static_text.set_font_size(32);
 	m_static_text.set_font_bold();
+	m_static_text.set_transparent();
+
 	m_button_ok.text_color(wheat);
 	m_button_cancel.text_color(wheat);
 	m_button_ok.back_color(cornflowerblue, true);
@@ -150,7 +151,7 @@ void CTestSCThemeDialogDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 	else
 	{
-		CSCThemeDialog::OnSysCommand(nID, lParam);
+		CSCThemeDlg::OnSysCommand(nID, lParam);
 	}
 }
 
@@ -179,7 +180,7 @@ void CTestSCThemeDialogDlg::OnPaint()
 	}
 	else
 	{
-		CSCThemeDialog::OnPaint();
+		CSCThemeDlg::OnPaint();
 	}
 }
 
@@ -210,7 +211,7 @@ void CTestSCThemeDialogDlg::OnBnClickedCancel()
 
 void CTestSCThemeDialogDlg::OnWindowPosChanged(WINDOWPOS* lpwndpos)
 {
-	CSCThemeDialog::OnWindowPosChanged(lpwndpos);
+	CSCThemeDlg::OnWindowPosChanged(lpwndpos);
 
 	// TODO: Add your message handler code here
 	SaveWindowPosition(&theApp, this);
