@@ -125,17 +125,17 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	m_static_text.set_font_bold();
 	m_static_text.set_transparent();
 
-	m_button_ok.text_color(wheat);
-	m_button_cancel.text_color(wheat);
-	m_button_ok.back_color(cornflowerblue, true);
-	m_button_cancel.back_color(cornflowerblue, true);
+	m_button_ok.set_text_color(wheat);
+	m_button_cancel.set_text_color(wheat);
+	m_button_ok.set_back_color(cornflowerblue, true);
+	m_button_cancel.set_back_color(cornflowerblue, true);
 
 	m_button_ok.set_round(10);
 	m_button_cancel.set_round(10);
 
 
 	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
-	set_back_image(_T("JPG"), (UINT)IDB_WINDOW, true);
+	set_back_image(_T("JPG"), (UINT)IDB_WINDOW, CGdiplusBitmap::draw_mode_stretch);
 
 	RestoreWindowPosition(&theApp, this);
 
