@@ -45,4 +45,5 @@ public:
 	CGdiButton m_button_ok;
 	CGdiButton m_button_cancel;
 	afx_msg void OnWindowPosChanged(WINDOWPOS* lpwndpos);
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };

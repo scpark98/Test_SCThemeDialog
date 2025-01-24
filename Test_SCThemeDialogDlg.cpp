@@ -133,6 +133,13 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	m_button_ok.set_round(10);
 	m_button_cancel.set_round(10);
 
+	//이 코드를 넣어야 작업표시줄에서 클릭하여 minimize, restore된다.
+	//작업표시줄에서 해당 앱을 shift+우클릭하여 SYSMENU를 표시할 수 있다.
+	//또한 CResizeCtrl을 이용하면 resize할 때 모든 컨트롤들의 레이아웃을 자동으로 맞춰주는데
+	//아래 코드를 사용하지 않으면 타이틀바가 없는 dlg는 상단에 흰색 여백 공간이 생기는 부작용이 생긴다.
+	//종료 시 묻는 대화상자를 표시하는 등의 이벤트가 발생하면 main dlg가 깜빡이는 현상이 있다.
+	SetWindowLong(m_hWnd, GWL_STYLE, WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_THICKFRAME | WS_CLIPCHILDREN);
+
 
 	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
 	set_back_image(_T("JPG"), (UINT)IDB_WINDOW, CGdiplusBitmap::draw_mode_stretch);
@@ -205,6 +212,9 @@ void CTestSCThemeDialogDlg::OnBnClickedOk()
 
 void CTestSCThemeDialogDlg::OnBnClickedCancel()
 {
+	if (AfxMessageBox(_T("테스트 프로그램을 종료합니다."), MB_OKCANCEL) == IDCANCEL)
+		return;
+
 	CDialogEx::OnCancel();
 }
 
@@ -215,4 +225,16 @@ void CTestSCThemeDialogDlg::OnWindowPosChanged(WINDOWPOS* lpwndpos)
 
 	// TODO: Add your message handler code here
 	SaveWindowPosition(&theApp, this);
+}
+
+
+BOOL CTestSCThemeDialogDlg::PreTranslateMessage(MSG* pMsg)
+{
+	// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.
+	if (pMsg->message == WM_KEYDOWN)
+	{
+		TRACE(_T("keydown on CTestSCThemeDialogDlg\n"));
+	}
+
+	return CDialogEx::PreTranslateMessage(pMsg);
 }
