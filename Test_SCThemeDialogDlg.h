@@ -7,6 +7,9 @@
 #include "../../Common/CStatic/SCStatic/SCStatic.h"
 #include "../../Common/CButton/GdiButton/GdiButton.h"
 #include "../../Common/ResizeCtrl.h"
+#include "../../Common/CTreeCtrl/SCTreeCtrl/SCTreeCtrl.h"
+#include "../../Common/CListCtrl/CVtListCtrlEx/VtListCtrlEx.h"
+#include "../../Common/system/ShellImageList/ShellImageList.h"
 
 // CTestSCThemeDialogDlg 대화 상자
 class CTestSCThemeDialogDlg : public CSCThemeDlg
@@ -23,6 +26,7 @@ public:
 protected:
 	CResizeCtrl		m_resize;
 
+	CShellImageList	m_shellimagelist;
 
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV 지원입니다.
@@ -46,4 +50,8 @@ public:
 	CGdiButton m_button_cancel;
 	afx_msg void OnWindowPosChanged(WINDOWPOS* lpwndpos);
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
+	CSCTreeCtrl m_tree;
+	CVtListCtrlEx m_list;
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 };

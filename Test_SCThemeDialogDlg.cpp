@@ -65,6 +65,8 @@ void CTestSCThemeDialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_TEXT, m_static_text);
 	DDX_Control(pDX, IDOK, m_button_ok);
 	DDX_Control(pDX, IDCANCEL, m_button_cancel);
+	DDX_Control(pDX, IDC_TREE, m_tree);
+	DDX_Control(pDX, IDC_LIST, m_list);
 }
 
 BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CSCThemeDlg)
@@ -74,6 +76,8 @@ BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CSCThemeDlg)
 	ON_BN_CLICKED(IDOK, &CTestSCThemeDialogDlg::OnBnClickedOk)
 	ON_BN_CLICKED(IDCANCEL, &CTestSCThemeDialogDlg::OnBnClickedCancel)
 	ON_WM_WINDOWPOSCHANGED()
+	ON_WM_ERASEBKGND()
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 
@@ -110,38 +114,45 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
 	m_resize.Create(this);
-	m_resize.Add(IDOK, 50, 100, 0, 0);
-	m_resize.Add(IDCANCEL, 50, 100, 0, 0);
-	m_resize.Add(IDC_STATIC_TEXT, 0, 0, 100, 100);
-
+	m_resize.Add(IDOK, 100, 100, 0, 0);
+	m_resize.Add(IDCANCEL, 100, 100, 0, 0);
+	m_resize.Add(IDC_STATIC_TEXT, 0, 0, 100, 0);
+	m_resize.Add(IDC_TREE, 0, 0, 20, 100);
+	m_resize.Add(IDC_LIST, 20, 0, 80, 100);
 	// 
 	//set_titlebar_color(RGB(64, 64, 255));
 	//set_back_color(RGB(64, 64, 64));
 	set_color_theme(CSCThemeDlg::color_theme_linkmemine);
-	SetWindowText(_T("SCThemeDialogDlg"));
+	//SetWindowText(_T("SCThemeDialogDlg"));
 
 	m_static_text.set_text_color(lightsalmon);
 	m_static_text.set_font_size(32);
 	m_static_text.set_font_bold();
-	m_static_text.set_transparent();
+	//m_static_text.set_transparent();
 
-	m_button_ok.set_text_color(wheat);
-	m_button_cancel.set_text_color(wheat);
-	m_button_ok.set_back_color(cornflowerblue, true);
-	m_button_cancel.set_back_color(cornflowerblue, true);
+	//m_button_ok.set_text_color(Gdiplus::Color::Wheat);
+	//m_button_cancel.set_text_color(Gdiplus::Color::Wheat);
+	//m_button_ok.set_back_color(Gdiplus::Color::CornflowerBlue, true);
+	//m_button_cancel.set_back_color(Gdiplus::Color::CornflowerBlue, true);
 
-	m_button_ok.set_round(10);
-	m_button_cancel.set_round(10);
+	m_button_ok.set_back_color(Gdiplus::Color::RoyalBlue);
+	m_button_ok.set_round(40);
+	m_button_cancel.set_back_color(Gdiplus::Color::RoyalBlue);
+	m_button_cancel.set_round(40);
 
 	//이 코드를 넣어야 작업표시줄에서 클릭하여 minimize, restore된다.
 	//작업표시줄에서 해당 앱을 shift+우클릭하여 SYSMENU를 표시할 수 있다.
 	//또한 CResizeCtrl을 이용하면 resize할 때 모든 컨트롤들의 레이아웃을 자동으로 맞춰주는데
 	//아래 코드를 사용하지 않으면 타이틀바가 없는 dlg는 상단에 흰색 여백 공간이 생기는 부작용이 생긴다.
 	//종료 시 묻는 대화상자를 표시하는 등의 이벤트가 발생하면 main dlg가 깜빡이는 현상이 있다.
+	//resizable dlg일 경우는 WS_THICKFRAME을 넣게 되는데 이를 넣으면 윈도우에서 기본 제공하는 shadow도 표시되므로
+	//CWndShadow 관련 옵션을 별도로 설정할 필요가 없다.
 	SetWindowLong(m_hWnd, GWL_STYLE, WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_THICKFRAME | WS_CLIPCHILDREN);
 
+	m_tree.set_as_shell_treectrl(&m_shellimagelist);
+	m_list.set_as_shell_listctrl(&m_shellimagelist);
 
-	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
+	//set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
 	set_back_image(_T("JPG"), (UINT)IDB_WINDOW, CGdiplusBitmap::draw_mode_stretch);
 
 	RestoreWindowPosition(&theApp, this);
@@ -237,4 +248,24 @@ BOOL CTestSCThemeDialogDlg::PreTranslateMessage(MSG* pMsg)
 	}
 
 	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+
+BOOL CTestSCThemeDialogDlg::OnEraseBkgnd(CDC* pDC)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+
+	return CSCThemeDlg::OnEraseBkgnd(pDC);
+}
+
+
+void CTestSCThemeDialogDlg::OnSize(UINT nType, int cx, int cy)
+{
+	CSCThemeDlg::OnSize(nType, cx, cy);
+
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	if (m_static_text.m_hWnd == NULL)
+		return;
+
+	m_static_text.Invalidate();
 }
