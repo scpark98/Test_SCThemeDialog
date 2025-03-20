@@ -24,6 +24,11 @@ public:
 #endif
 
 protected:
+	enum ID_TIMER
+	{
+		timer_refresh_title_area = 0,
+	};
+
 	CResizeCtrl		m_resize;
 
 	CShellImageList	m_shellimagelist;
@@ -54,4 +59,6 @@ public:
 	CVtListCtrlEx m_list;
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnSize(UINT nType, int cx, int cy);
+	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };

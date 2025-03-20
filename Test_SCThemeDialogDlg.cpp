@@ -78,6 +78,8 @@ BEGIN_MESSAGE_MAP(CTestSCThemeDialogDlg, CSCThemeDlg)
 	ON_WM_WINDOWPOSCHANGED()
 	ON_WM_ERASEBKGND()
 	ON_WM_SIZE()
+	ON_WM_ACTIVATE()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -123,6 +125,8 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	//set_titlebar_color(RGB(64, 64, 255));
 	//set_back_color(RGB(64, 64, 64));
 	set_color_theme(CSCThemeDlg::color_theme_linkmemine);
+	set_titlebar_icon(IDR_MAINFRAME, 20, 20);
+	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
 	//SetWindowText(_T("SCThemeDialogDlg"));
 
 	m_static_text.set_text_color(lightsalmon);
@@ -139,6 +143,7 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	m_button_ok.set_round(40);
 	m_button_cancel.set_back_color(Gdiplus::Color::RoyalBlue);
 	m_button_cancel.set_round(40);
+
 
 	//이 코드를 넣어야 작업표시줄에서 클릭하여 minimize, restore된다.
 	//작업표시줄에서 해당 앱을 shift+우클릭하여 SYSMENU를 표시할 수 있다.
@@ -199,6 +204,15 @@ void CTestSCThemeDialogDlg::OnPaint()
 	else
 	{
 		CSCThemeDlg::OnPaint();
+		/*
+		CRect rc;
+		GetClientRect(&rc);
+
+		CPaintDC dc(this);
+
+		rc.top = rc.bottom - 20;
+		dc.FillSolidRect(rc, RGB(255, 0, 0));
+		*/
 	}
 }
 
@@ -268,4 +282,32 @@ void CTestSCThemeDialogDlg::OnSize(UINT nType, int cx, int cy)
 		return;
 
 	m_static_text.Invalidate();
+}
+
+void CTestSCThemeDialogDlg::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
+{
+	CSCThemeDlg::OnActivate(nState, pWndOther, bMinimized);
+
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	if (nState == 0)
+	{
+		SetTimer(timer_refresh_title_area, 1, NULL);
+	}
+	else
+	{
+		KillTimer(timer_refresh_title_area);
+	}
+}
+
+void CTestSCThemeDialogDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	if (nIDEvent == timer_refresh_title_area)
+	{
+		KillTimer(nIDEvent);
+		Invalidate();
+		m_sys_buttons.Invalidate();
+	}
+
+	CSCThemeDlg::OnTimer(nIDEvent);
 }
