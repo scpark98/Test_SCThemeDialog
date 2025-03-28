@@ -16,6 +16,9 @@
     <Filter Include="Common">
       <UniqueIdentifier>{c2299523-82b5-41df-936b-a64ca690fe5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common\VtListCtrlEx">
+      <UniqueIdentifier>{e5058448-c722-47d9-8309-8cbafc2d75b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Test_SCThemeDialog.h">
@@ -75,15 +78,6 @@
     <ClInclude Include="..\..\Common\CTreeCtrl\SCTreeCtrl\SCTreeCtrl.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Common\CListCtrl\CVtListCtrlEx\HeaderCtrlEx.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Common\CListCtrl\CVtListCtrlEx\list_data.h">
-      <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Common\CListCtrl\CVtListCtrlEx\VtListCtrlEx.h">
-      <Filter>Common</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Common\CEdit\SCEdit\SCEdit.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -101,6 +95,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Common\CMenu\SCMenuBar\SCMenu.h">
       <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CListCtrl\CVtListCtrlEx\HeaderCtrlEx.h">
+      <Filter>Common\VtListCtrlEx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CListCtrl\CVtListCtrlEx\list_data.h">
+      <Filter>Common\VtListCtrlEx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\CListCtrl\CVtListCtrlEx\VtListCtrlEx.h">
+      <Filter>Common\VtListCtrlEx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,15 +152,6 @@
     <ClCompile Include="..\..\Common\CTreeCtrl\SCTreeCtrl\SCTreeCtrl.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Common\CListCtrl\CVtListCtrlEx\list_data.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Common\CListCtrl\CVtListCtrlEx\VtListCtrlEx.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Common\CListCtrl\CVtListCtrlEx\HeaderCtrlEx.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Common\CEdit\SCEdit\SCEdit.cpp">
       <Filter>Common</Filter>
     </ClCompile>
@@ -172,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Common\CMenu\SCMenuBar\SCMenu.cpp">
       <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CListCtrl\CVtListCtrlEx\HeaderCtrlEx.cpp">
+      <Filter>Common\VtListCtrlEx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CListCtrl\CVtListCtrlEx\list_data.cpp">
+      <Filter>Common\VtListCtrlEx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\CListCtrl\CVtListCtrlEx\VtListCtrlEx.cpp">
+      <Filter>Common\VtListCtrlEx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -127,7 +127,7 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	set_color_theme(CSCThemeDlg::color_theme_linkmemine);
 	set_titlebar_icon(IDR_MAINFRAME, 20, 20);
 	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
-	set_use_resizable(false);
+	//set_use_resizable(false);
 	//SetWindowText(_T("SCThemeDialogDlg"));
 
 	m_static_text.set_text_color(lightsalmon);
