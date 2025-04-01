@@ -105,6 +105,9 @@
     <ClInclude Include="..\..\Common\CListCtrl\CVtListCtrlEx\VtListCtrlEx.h">
       <Filter>Common\VtListCtrlEx</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Common\messagebox\CSCMessageBox\SCMessageBox.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_SCThemeDialog.cpp">
@@ -175,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="..\..\Common\CListCtrl\CVtListCtrlEx\VtListCtrlEx.cpp">
       <Filter>Common\VtListCtrlEx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\messagebox\CSCMessageBox\SCMessageBox.cpp">
+      <Filter>Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -45,7 +45,7 @@ BOOL CFirstDlg::OnInitDialog()
 	CSCThemeDlg::OnInitDialog();
 
 	// TODO:  여기에 추가 초기화 작업을 추가합니다.
-	set_color_theme(CSCThemeDlg::color_theme_linkmemine);
+	set_color_theme(CSCColorTheme::color_theme_linkmemine);
 
 	SetWindowLong(m_hWnd, GWL_STYLE, WS_SYSMENU | WS_DLGFRAME);
 

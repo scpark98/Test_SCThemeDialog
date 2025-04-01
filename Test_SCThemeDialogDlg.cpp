@@ -124,13 +124,14 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	// 
 	//set_titlebar_color(RGB(64, 64, 255));
 	//set_back_color(RGB(64, 64, 64));
-	set_color_theme(CSCThemeDlg::color_theme_linkmemine);
+	set_color_theme(CSCColorTheme::color_theme_linkmemine);
 	set_titlebar_icon(IDR_MAINFRAME, 20, 20);
 	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
 	//set_use_resizable(false);
 	//SetWindowText(_T("SCThemeDialogDlg"));
 
-	m_static_text.set_text_color(lightsalmon);
+	m_static_text.set_text_color(m_theme.cr_title_back);
+	m_static_text.set_back_color(m_theme.cr_back);
 	m_static_text.set_font_size(32);
 	m_static_text.set_font_bold();
 	//m_static_text.set_transparent();
@@ -140,9 +141,13 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	//m_button_ok.set_back_color(Gdiplus::Color::CornflowerBlue, true);
 	//m_button_cancel.set_back_color(Gdiplus::Color::CornflowerBlue, true);
 
-	m_button_ok.set_back_color(Gdiplus::Color::RoyalBlue);
+	m_button_ok.use_hover();
+	m_button_ok.set_text_color(m_theme.cr_title_text);
+	m_button_ok.set_back_color(m_theme.cr_title_back);
 	m_button_ok.set_round(40);
-	m_button_cancel.set_back_color(Gdiplus::Color::RoyalBlue);
+
+	m_button_cancel.set_text_color(m_theme.cr_title_text);
+	m_button_cancel.set_back_color(m_theme.cr_title_back);
 	m_button_cancel.set_round(40);
 
 
@@ -157,6 +162,10 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 
 	m_tree.set_as_shell_treectrl(&m_shellimagelist);
 	m_list.set_as_shell_listctrl(&m_shellimagelist);
+
+	//메시지 창 초기화
+	m_message.create(this, _T("Test_SCThemeDialog"));// , IDR_MAINFRAME);
+	m_message.set_color_theme(m_theme.get_color_theme());
 
 	//set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
 	set_back_image(_T("JPG"), (UINT)IDB_WINDOW, CGdiplusBitmap::draw_mode_stretch);
@@ -238,7 +247,7 @@ void CTestSCThemeDialogDlg::OnBnClickedOk()
 
 void CTestSCThemeDialogDlg::OnBnClickedCancel()
 {
-	if (AfxMessageBox(_T("테스트 프로그램을 종료합니다."), MB_OKCANCEL) == IDCANCEL)
+	if (m_message.DoModal(_T("테스트 프로그램을 종료합니다."), MB_OKCANCEL) == IDCANCEL)
 		return;
 
 	CDialogEx::OnCancel();

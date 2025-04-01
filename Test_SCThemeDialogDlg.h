@@ -10,6 +10,8 @@
 #include "../../Common/CTreeCtrl/SCTreeCtrl/SCTreeCtrl.h"
 #include "../../Common/CListCtrl/CVtListCtrlEx/VtListCtrlEx.h"
 #include "../../Common/system/ShellImageList/ShellImageList.h"
+#include "../../Common/messagebox/CSCMessageBox/SCMessageBox.h"
+
 
 // CTestSCThemeDialogDlg 대화 상자
 class CTestSCThemeDialogDlg : public CSCThemeDlg
@@ -30,6 +32,8 @@ protected:
 	};
 
 	CResizeCtrl		m_resize;
+	CSCMessageBox	m_message;
+
 
 	CShellImageList	m_shellimagelist;
 
