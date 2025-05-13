@@ -124,14 +124,15 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	// 
 	//set_titlebar_color(RGB(64, 64, 255));
 	//set_back_color(RGB(64, 64, 64));
-	set_color_theme(CSCColorTheme::color_theme_linkmemine);
-	set_titlebar_icon(IDR_MAINFRAME, 20, 20);
+	set_color_theme(CSCColorTheme::color_theme_linkmemine_se);
+	set_title_icon(IDR_MAINFRAME, 20, 20);
 	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
 	//set_use_resizable(false);
 	//SetWindowText(_T("SCThemeDialogDlg"));
 
-	m_static_text.set_text_color(m_theme.cr_title_back);
-	m_static_text.set_back_color(m_theme.cr_back);
+	//m_static_text.set_text_color(m_theme.cr_title_back);
+	//m_static_text.set_back_color(m_theme.cr_back);
+	m_static_text.set_color(m_theme.cr_title_back, m_theme.cr_back);
 	m_static_text.set_font_size(32);
 	m_static_text.set_font_bold();
 	//m_static_text.set_transparent();
@@ -238,6 +239,8 @@ HCURSOR CTestSCThemeDialogDlg::OnQueryDragIcon()
 
 void CTestSCThemeDialogDlg::OnBnClickedOk()
 {
+	m_static_text.set_textf(-1, _T("Test SCThemeDialog"));
+
 	set_back_image(_T("jpg"), IDB_AUTUMN_LIVINGROOM, true);
 	//set_back_image(_T("png"), _T("D:\\1.Projects_C++\\1.test\\Test_SCThemeDialog\\res\\images\\icecream.png"), true);
 	CFirstDlg dlg;

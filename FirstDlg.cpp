@@ -69,7 +69,7 @@ void CFirstDlg::OnBnClickedCancel()
 
 void CFirstDlg::OnBnClickedCheckTitlebar()
 {
-	set_titlebar_height(m_check_titlebar.GetCheck() == BST_CHECKED ? 32 : 0);
+	set_title_height(m_check_titlebar.GetCheck() == BST_CHECKED ? 32 : 0);
 }
 
 
