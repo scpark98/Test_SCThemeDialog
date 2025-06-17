@@ -125,8 +125,10 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 	//set_titlebar_color(RGB(64, 64, 255));
 	//set_back_color(RGB(64, 64, 64));
 	set_color_theme(CSCColorTheme::color_theme_anysupport);
-	set_title_icon(IDR_MAINFRAME, 20, 20);
-	set_system_buttons(SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
+	set_titlebar_icon(IDR_MAINFRAME, 20, 20);
+
+
+	set_system_buttons(this, SC_HELP, SC_PIN, SC_MINIMIZE, SC_MAXIMIZE, SC_CLOSE);
 	//set_use_resizable(false);
 	//SetWindowText(_T("SCThemeDialogDlg"));
 
@@ -185,6 +187,16 @@ void CTestSCThemeDialogDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 	else
 	{
+		TRACE(_T("CTestSCThemeDialogDlg::OnSysCommand. nID = %d, lParam = %ld\n"), nID, lParam);
+		if (nID == SC_MAXIMIZE)
+		{
+			set_titlebar_height(0);
+		}
+		else if (nID == SC_RESTORE)
+		{
+			set_titlebar_height(32);
+		}
+
 		CSCThemeDlg::OnSysCommand(nID, lParam);
 	}
 }
