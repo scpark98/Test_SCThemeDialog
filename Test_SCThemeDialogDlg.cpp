@@ -175,6 +175,13 @@ BOOL CTestSCThemeDialogDlg::OnInitDialog()
 
 	RestoreWindowPosition(&theApp, this);
 
+	ptimer_start(0);
+	long t0 = clock();
+	Sleep(1234);
+	long t1 = clock();
+	double elapsed = ptimer_get_time(0);
+	TRACE(_T("elapsed time = %f ms, clock = %ld\n"), elapsed, t1 - t0);
+
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
